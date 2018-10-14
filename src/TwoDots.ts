@@ -1,6 +1,4 @@
 
-class TwoDots {
-
-}
+class TwoDots {}
 
 export default TwoDots;

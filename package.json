@@ -24,11 +24,13 @@
   },
   "homepage": "https://github.com/ugurk/two-dots#readme",
   "devDependencies": {
+    "@types/glob": "^7.1.1",
     "@types/node": "^10.11.7",
     "@types/webpack": "^4.4.16",
     "@types/webpack-merge": "^4.1.3",
     "babel-preset-es2015": "^6.24.1",
     "babel-register": "^6.26.0",
+    "glob": "^7.1.3",
     "ts-loader": "^5.2.1",
     "ts-node": "^7.0.1",
     "typescript": "^3.1.3",
