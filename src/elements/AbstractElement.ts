@@ -2,7 +2,7 @@ import Dimension from '../core/Dimension';
 import Point from '../core/Point';
 import Serializable from '../core/Serializable';
 
-abstract class AbstractElement implements Serializable {
+abstract class AbstractElement<T> implements Serializable<T> {
   constructor(
     public selectionOrder = -1,
     public grabbed = false,
@@ -18,5 +18,5 @@ abstract class AbstractElement implements Serializable {
 
   public abstract serialize(): any;
 
-  public abstract deserialize(refElement: any): any;
+  public abstract deserialize(refElement: any): T;
 }

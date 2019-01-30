@@ -9,12 +9,9 @@ export default class Transform {
   public clone(): Transform {
     const transform = new Transform();
     transform.angle = this.angle;
-    transform.rotation.x = this.rotation.x;
-    transform.rotation.y = this.rotation.y;
-    transform.scale.x = this.scale.x;
-    transform.scale.y = this.scale.y;
-    transform.translate.x = this.translate.x;
-    transform.translate.x = this.translate.y;
+    transform.rotation = { ...this.rotation };
+    transform.scale = { ...this.scale };
+    transform.translate = { ...this.translate };
     return transform;
   }
 }

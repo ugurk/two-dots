@@ -2,7 +2,7 @@ import Dimension from './Dimension';
 import Serializable from './Serializable';
 import Transform from './Transform';
 
-export default class Point implements Serializable {
+export default class Point implements Serializable<Point> {
   constructor(public x = 0, public y = 0) {}
 
   public distanceTo(other: Point): number {
@@ -99,8 +99,9 @@ export default class Point implements Serializable {
     return { x: this.x, y: this.y };
   }
 
-  public deserialize(dim: Dimension): void {
+  public deserialize(dim: Dimension): Point {
     this.x = dim.x;
     this.y = dim.y;
+    return this;
   }
 }
