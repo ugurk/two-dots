@@ -1,11 +1,12 @@
-import { Serializable } from './Serializable';
+import { Serializable, SerializedObject } from './Serializable';
 import { Transform } from './Transform';
 import { Dimension } from './Dimension';
 
 export class Point implements Serializable<Point>, Dimension {
-  constructor(public x = 0, public y = 0) {}
+  constructor(public x = 0, public y = 0) {
+  }
 
-  distanceTo(other: Point): number {
+  distanceTo(other: Point | Dimension): number {
     return Math.sqrt(
       Math.pow(this.x - other.x, 2) + Math.pow(this.y - other.y, 2)
     );
@@ -95,13 +96,17 @@ export class Point implements Serializable<Point>, Dimension {
     return new Point(this.x, this.y);
   }
 
-  serialize(): Dimension {
-    return { x: this.x, y: this.y };
+  serialize(): SerializedObject {
+    return {x: this.x, y: this.y};
   }
 
-  deserialize(dim: Dimension): Point {
-    this.x = dim.x;
-    this.y = dim.y;
+  deserialize(so: SerializedObject): Point {
+    this.x = +so.x;
+    this.y = +so.y;
     return this;
+  }
+
+  static fromObject(so: SerializedObject): Point {
+    return new Point(+so.x || 0, +so.y || 0);
   }
 }

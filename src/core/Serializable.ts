@@ -1,5 +1,9 @@
 export interface Serializable<T> {
-  serialize(): object;
+  serialize(): SerializedObject;
 
-  deserialize(refElement: object): T;
+  deserialize(refElement: SerializedObject): T;
+}
+
+export interface SerializedObject {
+  [key: string]: number | string | boolean;
 }

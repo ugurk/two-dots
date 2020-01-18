@@ -1,6 +1,6 @@
 import { Dimension } from '../core/Dimension';
 import { Point } from '../core/Point';
-import { Serializable } from '../core/Serializable';
+import { Serializable, SerializedObject } from '../core/Serializable';
 
 export abstract class AbstractElement<T> implements Serializable<T> {
   selectionOrder = -1;
@@ -8,13 +8,16 @@ export abstract class AbstractElement<T> implements Serializable<T> {
   selected = false;
   selectable = true;
   locked = false;
+  abstract typeName: string;
 
   abstract isPointOnObject(
     point: Point | Dimension,
     tolerance: number
   ): boolean;
 
-  abstract serialize(): object;
+  abstract clone(): T;
 
-  abstract deserialize(refElement: object): T;
+  abstract serialize(): SerializedObject;
+
+  abstract deserialize(refElement: SerializedObject): T;
 }
