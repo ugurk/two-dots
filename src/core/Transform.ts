@@ -1,12 +1,12 @@
-import Dimension from './Dimension';
+import { Dimension } from './Dimension';
 
-export default class Transform {
-  public angle = 0;
-  public rotation: Dimension = { x: 0, y: 0 };
-  public scale: Dimension = { x: 0, y: 0 };
-  public translate: Dimension = { x: 0, y: 0 };
+export class Transform {
+  angle = 0;
+  rotation: Dimension = { x: 0, y: 0 };
+  scale: Dimension = { x: 0, y: 0 };
+  translate: Dimension = { x: 0, y: 0 };
 
-  public clone(): Transform {
+  clone(): Transform {
     const transform = new Transform();
     transform.angle = this.angle;
     transform.rotation = { ...this.rotation };

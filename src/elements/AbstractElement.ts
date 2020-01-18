@@ -1,22 +1,20 @@
-import Dimension from '../core/Dimension';
-import Point from '../core/Point';
-import Serializable from '../core/Serializable';
+import { Dimension } from '../core/Dimension';
+import { Point } from '../core/Point';
+import { Serializable } from '../core/Serializable';
 
-abstract class AbstractElement<T> implements Serializable<T> {
-  constructor(
-    public selectionOrder = -1,
-    public grabbed = false,
-    public selected = false,
-    public selectable = true,
-    public locked = false
-  ) {}
+export abstract class AbstractElement<T> implements Serializable<T> {
+  selectionOrder = -1;
+  grabbed = false;
+  selected = false;
+  selectable = true;
+  locked = false;
 
-  public abstract isPointOnObject(
+  abstract isPointOnObject(
     point: Point | Dimension,
     tolerance: number
   ): boolean;
 
-  public abstract serialize(): any;
+  abstract serialize(): object;
 
-  public abstract deserialize(refElement: any): T;
+  abstract deserialize(refElement: object): T;
 }

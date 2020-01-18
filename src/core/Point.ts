@@ -1,27 +1,27 @@
-import Dimension from './Dimension';
-import Serializable from './Serializable';
-import Transform from './Transform';
+import { Serializable } from './Serializable';
+import { Transform } from './Transform';
+import { Dimension } from './Dimension';
 
-export default class Point implements Serializable<Point> {
+export class Point implements Serializable<Point>, Dimension {
   constructor(public x = 0, public y = 0) {}
 
-  public distanceTo(other: Point): number {
+  distanceTo(other: Point): number {
     return Math.sqrt(
       Math.pow(this.x - other.x, 2) + Math.pow(this.y - other.y, 2)
     );
   }
 
-  public distanceToOrigin(): number {
+  distanceToOrigin(): number {
     return Math.sqrt(this.x * this.x + this.y + this.y);
   }
 
-  public normalize(): Point {
+  normalize(): Point {
     const dPoint = this.clone().abs();
     const divider = dPoint.x > dPoint.y ? dPoint.x : dPoint.y;
     return this.divide(divider);
   }
 
-  public subtract(sub: number | Point): Point {
+  subtract(sub: number | Point): Point {
     if (typeof sub === 'number') {
       this.x -= sub;
       this.y -= sub;
@@ -32,7 +32,7 @@ export default class Point implements Serializable<Point> {
     return this;
   }
 
-  public add(acc: number | Point): Point {
+  add(acc: number | Point): Point {
     if (typeof acc === 'number') {
       this.x += acc;
       this.y += acc;
@@ -43,7 +43,7 @@ export default class Point implements Serializable<Point> {
     return this;
   }
 
-  public divide(divider: number | Point): Point {
+  divide(divider: number | Point): Point {
     if (typeof divider === 'number') {
       this.x /= divider;
       this.y /= divider;
@@ -54,13 +54,13 @@ export default class Point implements Serializable<Point> {
     return this;
   }
 
-  public set(point: Point): Point {
+  set(point: Point): Point {
     this.x = point.x;
     this.y = point.y;
     return this;
   }
 
-  public multiply(multiplier: number | Point): Point {
+  multiply(multiplier: number | Point): Point {
     if (typeof multiplier === 'number') {
       this.x *= multiplier;
       this.y *= multiplier;
@@ -71,13 +71,13 @@ export default class Point implements Serializable<Point> {
     return this;
   }
 
-  public abs(): Point {
+  abs(): Point {
     this.x = Math.abs(this.x);
     this.y = Math.abs(this.y);
     return this;
   }
 
-  public cloneRotated(rotationCenter: Dimension, angle: number): Point {
+  cloneRotated(rotationCenter: Dimension, angle: number): Point {
     const cos = Math.cos((angle * Math.PI) / 180);
     const sin = Math.sin((angle * Math.PI) / 180);
     const dx =
@@ -87,19 +87,19 @@ export default class Point implements Serializable<Point> {
     return new Point(dx + rotationCenter.x, dy + rotationCenter.y);
   }
 
-  public cloneRotatedByTransform(transform: Transform): Point {
+  cloneRotatedByTransform(transform: Transform): Point {
     return this.cloneRotated(transform.rotation, transform.angle);
   }
 
-  public clone(): Point {
+  clone(): Point {
     return new Point(this.x, this.y);
   }
 
-  public serialize(): Dimension {
+  serialize(): Dimension {
     return { x: this.x, y: this.y };
   }
 
-  public deserialize(dim: Dimension): Point {
+  deserialize(dim: Dimension): Point {
     this.x = dim.x;
     this.y = dim.y;
     return this;

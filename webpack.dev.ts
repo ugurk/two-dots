@@ -1,13 +1,9 @@
-import merge from 'webpack-merge';
-import common from './webpack.common';
+import * as merge from 'webpack-merge';
+import {commonConfig} from './webpack.common';
 
-const config = merge(common, {
-  mode: 'development',
-  devtool: 'inline-source-map',
-  devServer: {
-    contentBase: './dist',
-    port: 9000
-  }
+const config = merge(commonConfig, {
+    mode: 'development',
+    devtool: 'inline-source-map'
 });
 
-export default config;
+module.exports = config;

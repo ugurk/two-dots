@@ -1,4 +1,1 @@
-
-class TwoDots {}
-
-export default TwoDots;
+export class TwoDots {}

@@ -1,8 +1,8 @@
-import merge from 'webpack-merge';
-import common from './webpack.common';
+import * as merge from 'webpack-merge';
+import {commonConfig} from "./webpack.common";
 
-const config = merge(common, {
-  mode: 'production'
+const config = merge(commonConfig, {
+    mode: 'production'
 });
 
-export default config;
+module.exports = config;

@@ -1,4 +1,4 @@
-export default interface Dimension {
+export interface Dimension {
   x: number;
   y: number;
 }

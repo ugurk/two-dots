@@ -1,5 +1,5 @@
-export default interface Serializable<T> {
-  serialize(): any;
+export interface Serializable<T> {
+  serialize(): object;
 
-  deserialize(refElement: any): T;
+  deserialize(refElement: object): T;
 }
