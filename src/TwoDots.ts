@@ -1,1 +1,2 @@
-export class TwoDots {}
+export class TwoDots {
+}
