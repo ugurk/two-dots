@@ -92,6 +92,10 @@ export class Point implements Serializable<Point>, Dimension {
     return this.cloneRotated(transform.rotation, transform.angle);
   }
 
+  cloneByTransform(transform: Transform): Point {
+    return this.cloneRotated(transform.rotation, transform.angle).multiply(transform.scale);
+  }
+
   asDimension(): Dimension {
     return {
       x: this.x,
