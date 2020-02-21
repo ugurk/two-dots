@@ -1,7 +1,7 @@
 import { Circle } from '../elements/Circle';
 import { AbstractRenderer } from './AbstractRenderer';
 
-class CircleRenderer extends AbstractRenderer<Circle> {
+export class CircleRenderer extends AbstractRenderer<Circle> {
 
     render(circle: Circle): Circle {
         // TODO: styling

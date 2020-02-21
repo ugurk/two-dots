@@ -1,7 +1,7 @@
 import { Rectangle } from '../elements/Rectangle';
 import { AbstractRenderer } from './AbstractRenderer';
 
-class RectangleRenderer extends AbstractRenderer<Rectangle> {
+export class RectangleRenderer extends AbstractRenderer<Rectangle> {
 
     render(rectangle: Rectangle): Rectangle {
         // TODO: styling
