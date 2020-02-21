@@ -1,6 +1,6 @@
+import { Dimension } from './Dimension';
 import { Serializable, SerializedObject } from './Serializable';
 import { Transform } from './Transform';
-import { Dimension } from './Dimension';
 
 export class Point implements Serializable<Point>, Dimension {
   constructor(public x = 0, public y = 0) {
@@ -22,50 +22,50 @@ export class Point implements Serializable<Point>, Dimension {
     return this.divide(divider);
   }
 
-  subtract(sub: number | Point): Point {
+  subtract(sub: number | Point | Dimension): Point {
     if (typeof sub === 'number') {
       this.x -= sub;
       this.y -= sub;
-    } else if (sub instanceof Point) {
+    } else if (sub.x != null && sub.y != null) {
       this.x -= sub.x;
       this.y -= sub.y;
     }
     return this;
   }
 
-  add(acc: number | Point): Point {
+  add(acc: number | Point | Dimension): Point {
     if (typeof acc === 'number') {
       this.x += acc;
       this.y += acc;
-    } else if (acc instanceof Point) {
+    } else if (acc.x != null && acc.y != null) {
       this.x += acc.x;
       this.y += acc.y;
     }
     return this;
   }
 
-  divide(divider: number | Point): Point {
+  divide(divider: number | Point | Dimension): Point {
     if (typeof divider === 'number') {
       this.x /= divider;
       this.y /= divider;
-    } else if (divider instanceof Point) {
+    } else if (divider.x != null && divider.y != null) {
       this.x /= divider.x;
       this.y /= divider.y;
     }
     return this;
   }
 
-  set(point: Point): Point {
+  set(point: Point | Dimension): Point {
     this.x = point.x;
     this.y = point.y;
     return this;
   }
 
-  multiply(multiplier: number | Point): Point {
+  multiply(multiplier: number | Point | Dimension): Point {
     if (typeof multiplier === 'number') {
       this.x *= multiplier;
       this.y *= multiplier;
-    } else if (multiplier instanceof Point) {
+    } else if (multiplier.x != null && multiplier.y != null) {
       this.x *= multiplier.x;
       this.y *= multiplier.y;
     }
@@ -92,12 +92,19 @@ export class Point implements Serializable<Point>, Dimension {
     return this.cloneRotated(transform.rotation, transform.angle);
   }
 
+  asDimension(): Dimension {
+    return {
+      x: this.x,
+      y: this.y
+    }
+  }
+
   clone(): Point {
     return new Point(this.x, this.y);
   }
 
   serialize(): SerializedObject {
-    return {x: this.x, y: this.y};
+    return { x: this.x, y: this.y };
   }
 
   deserialize(so: SerializedObject): Point {

@@ -224,11 +224,11 @@ export class Line extends AbstractElement<Line> {
   }
 
   deserialize(refElement: SerializedObject): Line {
-    throw new Error("Unsupported feature");
+    throw new Error('Method not implemented.');
   }
 
   serialize(): SerializedObject {
-    throw new Error("Unsupported feature");
+    throw new Error('Method not implemented.');
   }
 
 }
