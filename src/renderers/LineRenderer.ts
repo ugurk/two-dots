@@ -6,8 +6,8 @@ export class LineRenderer extends AbstractRenderer<Line> {
   render(line: Line): Line {
     // TODO: styling
 
-    const rStart = line.pointStart.cloneRotatedByTransform(this.transform).multiply(this.transform.scale);
-    const rEnd = line.pointEnd.cloneRotatedByTransform(this.transform).multiply(this.transform.scale);
+    const rStart = line.pointStart.cloneByTransform(this.transform);
+    const rEnd = line.pointEnd.cloneByTransform(this.transform);
 
     this.ctx.beginPath();
     this.ctx.moveTo(rStart.x, rStart.y);
