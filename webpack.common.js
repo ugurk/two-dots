@@ -3,14 +3,12 @@ const path = require('path');
 
 module.exports = {
   // entry: glob.sync('./src/**/*.ts'),
-  entry: './src/index.ts',
+  entry: './index.ts',
   output: {
     filename: 'two-dots.min.js',
     path: path.resolve(__dirname, 'dist'),
-    libraryTarget: 'amd',
-    // library: 'two-dots',
-    // umdNamedDefine: true,
-    publicPath: 'dist'
+    library: 'TwoDots',
+		libraryTarget: "umd"
   },
   resolve: {
     extensions: ['.ts', '.js'],

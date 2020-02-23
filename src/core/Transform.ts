@@ -4,7 +4,7 @@ import { Point } from './Point';
 export class Transform {
   angle = 0;
   rotation: Dimension = { x: 0, y: 0 };
-  scale: Dimension = { x: 0, y: 0 };
+  scale: Dimension = { x: 1, y: 1 };
   translate: Dimension = { x: 0, y: 0 };
 
   clone(): Transform {
