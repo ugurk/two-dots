@@ -2,7 +2,6 @@ import { Line } from '../elements/Line';
 import { AbstractRenderer } from './AbstractRenderer';
 
 export class LineRenderer extends AbstractRenderer<Line> {
-
   render(line: Line): Line {
     // TODO: styling
 
@@ -16,5 +15,4 @@ export class LineRenderer extends AbstractRenderer<Line> {
     this.ctx.stroke();
     return line;
   }
-
 }

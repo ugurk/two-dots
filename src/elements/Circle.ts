@@ -4,10 +4,14 @@ import { SerializedObject } from '../core/Serializable';
 import { AbstractElement } from './AbstractElement';
 
 export class Circle extends AbstractElement<Circle> {
-
   typeName = 'Circle';
 
-  constructor(public center: Point, public radius: number, public filled: false, public style?: string) {
+  constructor(
+    public center: Point,
+    public radius: number,
+    public filled: false,
+    public style?: string
+  ) {
     super();
     this.selectionOrder = 1000;
   }
@@ -19,14 +23,16 @@ export class Circle extends AbstractElement<Circle> {
   isPointOnObject(point: Point | Dimension, tolerance = 0): boolean {
     // TODO: tolerance scaling by line width
 
-    let distance = this.centerDistanceTo(point);
+    const distance = this.centerDistanceTo(point);
 
     if (this.filled) {
-      this.grabbed = (this.radius + tolerance >= distance);
+      this.grabbed = this.radius + tolerance >= distance;
       return this.grabbed;
     }
 
-    this.grabbed = (this.radius + tolerance >= distance && distance >= this.radius - tolerance);
+    this.grabbed =
+      this.radius + tolerance >= distance &&
+      distance >= this.radius - tolerance;
     return this.grabbed;
   }
 
@@ -41,5 +47,4 @@ export class Circle extends AbstractElement<Circle> {
   deserialize(refElement: SerializedObject): Circle {
     throw new Error('Method not implemented.');
   }
-
 }

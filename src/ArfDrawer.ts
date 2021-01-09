@@ -2,7 +2,6 @@ import { CanvasLayer } from './layers/CanvasLayer';
 import { Transform } from './core/Transform';
 
 export class ArfDrawer {
-
   private layers: CanvasLayer[] = [];
   private defaultLayer: CanvasLayer | null = null;
 
@@ -12,5 +11,4 @@ export class ArfDrawer {
       this.layers.push(this.defaultLayer);
     }
   }
-
 }

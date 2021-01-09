@@ -3,8 +3,7 @@ import { Serializable, SerializedObject } from './Serializable';
 import { Transform } from './Transform';
 
 export class Point implements Serializable<Point>, Dimension {
-  constructor(public x = 0, public y = 0) {
-  }
+  constructor(public x = 0, public y = 0) {}
 
   distanceTo(other: Point | Dimension): number {
     return Math.sqrt(
@@ -93,14 +92,16 @@ export class Point implements Serializable<Point>, Dimension {
   }
 
   cloneByTransform(transform: Transform): Point {
-    return this.cloneRotated(transform.rotation, transform.angle).multiply(transform.scale);
+    return this.cloneRotated(transform.rotation, transform.angle).multiply(
+      transform.scale
+    );
   }
 
   asDimension(): Dimension {
     return {
       x: this.x,
-      y: this.y
-    }
+      y: this.y,
+    };
   }
 
   clone(): Point {
@@ -108,7 +109,7 @@ export class Point implements Serializable<Point>, Dimension {
   }
 
   serialize(): SerializedObject {
-    return {x: this.x, y: this.y};
+    return { x: this.x, y: this.y };
   }
 
   deserialize(so: SerializedObject): Point {

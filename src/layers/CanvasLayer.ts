@@ -2,15 +2,21 @@ import { Transform } from '../core/Transform';
 import { Polygon } from '../elements/Polygon';
 
 export class CanvasLayer {
-
   private canvas: HTMLCanvasElement = document.createElement('canvas');
 
-  constructor(public width = 600, public height = 600, public transform: Transform, public opacity = 1) {
-  }
+  constructor(
+    public width = 600,
+    public height = 600,
+    public transform: Transform,
+    public opacity = 1
+  ) {}
 
   initLayer(presetCanvas?: HTMLCanvasElement) {
     this.canvas = presetCanvas || document.createElement('canvas');
-    this.canvas.setAttribute('style', 'position: absolute; top: 0px; left: 0px;');
+    this.canvas.setAttribute(
+      'style',
+      'position: absolute; top: 0px; left: 0px;'
+    );
     this.canvas.width = this.width;
     this.canvas.height = this.height;
   }
@@ -20,7 +26,7 @@ export class CanvasLayer {
   }
 
   refresh() {
-    let ctx = this.ctx;
+    const ctx = this.ctx;
     ctx.restore();
     this.clear();
     ctx.save();
@@ -30,7 +36,7 @@ export class CanvasLayer {
 
     // rotate around
     ctx.translate(this.transform.rotation.x, this.transform.rotation.y);
-    ctx.rotate(this.transform.angle * Math.PI / 180);
+    ctx.rotate((this.transform.angle * Math.PI) / 180);
     ctx.translate(-this.transform.rotation.x, -this.transform.rotation.y);
 
     ctx.translate(this.transform.translate.x, this.transform.translate.y);
@@ -39,35 +45,40 @@ export class CanvasLayer {
   }
 
   clear() {
-    let ctx = this.ctx;
+    const ctx = this.ctx;
     ctx.save();
     // use the identity matrix while clearing the canvas
     ctx.setTransform(1, 0, 0, 1, 0, 0);
     ctx.clearRect(0, 0, this.width, this.height);
     ctx.restore();
-  };
+  }
 
   clone(): CanvasLayer {
-    const cloneLayer = new CanvasLayer(this.width, this.height, this.transform, this.opacity);
+    const cloneLayer = new CanvasLayer(
+      this.width,
+      this.height,
+      this.transform,
+      this.opacity
+    );
     cloneLayer.initLayer();
     cloneLayer.ctx.drawImage(this.canvas, 0, 0);
     return cloneLayer;
   }
 
   cropByPolygon(polygon: Polygon, extractFromSelf = false): CanvasLayer {
-
     if (!polygon.points.length) {
       return this.clone();
     }
 
-    let currentCtx = this.ctx;
-    let points = polygon.points, i;
+    const currentCtx = this.ctx;
+    const points = polygon.points;
+    let i;
 
-    var cropCanvas = document.createElement('canvas');
+    const cropCanvas = document.createElement('canvas');
     cropCanvas.width = this.width;
     cropCanvas.height = this.height;
 
-    let cropCtx = cropCanvas.getContext('2d')!;
+    const cropCtx = cropCanvas.getContext('2d')!;
 
     cropCtx.beginPath();
     cropCtx.moveTo(points[0].x, points[0].y);
@@ -95,9 +106,13 @@ export class CanvasLayer {
       currentCtx.restore();
     }
     this.refresh();
-    const cropLayer = new CanvasLayer(this.width, this.height, this.transform, this.opacity);
+    const cropLayer = new CanvasLayer(
+      this.width,
+      this.height,
+      this.transform,
+      this.opacity
+    );
     cropLayer.initLayer(cropCanvas);
     return cropLayer;
-  };
-
+  }
 }
