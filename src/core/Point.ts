@@ -108,7 +108,7 @@ export class Point implements Serializable<Point>, Dimension {
   }
 
   serialize(): SerializedObject {
-    return { x: this.x, y: this.y };
+    return {x: this.x, y: this.y};
   }
 
   deserialize(so: SerializedObject): Point {

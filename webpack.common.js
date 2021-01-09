@@ -8,7 +8,7 @@ module.exports = {
     filename: 'two-dots.min.js',
     path: path.resolve(__dirname, 'dist'),
     library: 'TwoDots',
-		libraryTarget: "umd"
+    libraryTarget: "umd"
   },
   resolve: {
     extensions: ['.ts', '.js'],

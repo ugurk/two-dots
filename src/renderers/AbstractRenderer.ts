@@ -1,4 +1,4 @@
-import { Transform } from "../core/Transform";
+import { Transform } from '../core/Transform';
 
 export abstract class AbstractRenderer<T> {
 

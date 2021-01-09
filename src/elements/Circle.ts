@@ -19,7 +19,7 @@ export class Circle extends AbstractElement<Circle> {
   isPointOnObject(point: Point | Dimension, tolerance = 0): boolean {
     // TODO: tolerance scaling by line width
 
-    var distance = this.centerDistanceTo(point);
+    let distance = this.centerDistanceTo(point);
 
     if (this.filled) {
       this.grabbed = (this.radius + tolerance >= distance);

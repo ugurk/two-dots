@@ -1,7 +1,7 @@
-import { AbstractElement } from "./AbstractElement";
-import { Point } from "../core/Point";
-import { Dimension } from "../core/Dimension";
-import { SerializedObject } from "../core/Serializable";
+import { AbstractElement } from './AbstractElement';
+import { Point } from '../core/Point';
+import { Dimension } from '../core/Dimension';
+import { SerializedObject } from '../core/Serializable';
 
 export class Line extends AbstractElement<Line> {
   typeName = 'Line';
