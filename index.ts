@@ -17,4 +17,4 @@ export * from './src/renderers/LineRenderer';
 export * from './src/renderers/PolygonRenderer';
 export * from './src/renderers/RectangleRenderer';
 
-export * from './src/TwoDots';
+export * from './src/ArfDrawer';

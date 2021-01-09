@@ -1,5 +1,5 @@
 {
-  "name": "two-dots",
+  "name": "arfjs",
   "version": "1.0.0",
   "description": "2D graphics library",
   "main": "index.js",
@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ugurk/two-dots.git"
+    "url": "git+https://github.com/ugurk/arfjs.git"
   },
   "keywords": [
     "2d",
@@ -28,9 +28,9 @@
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ugurk/two-dots/issues"
+    "url": "https://github.com/ugurk/arfjs/issues"
   },
-  "homepage": "https://github.com/ugurk/two-dots#readme",
+  "homepage": "https://github.com/ugurk/arfjs#readme",
   "devDependencies": {
     "@types/glob": "^7.1.1",
     "@types/node": "^10.17.13",

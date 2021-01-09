@@ -5,9 +5,9 @@ module.exports = {
   // entry: glob.sync('./src/**/*.ts'),
   entry: './index.ts',
   output: {
-    filename: 'two-dots.min.js',
+    filename: 'arfjs.min.js',
     path: path.resolve(__dirname, 'dist'),
-    library: 'TwoDots',
+    library: 'ArfJS',
     libraryTarget: "umd"
   },
   resolve: {

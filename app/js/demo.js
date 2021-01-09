@@ -2,14 +2,14 @@ const container = document.querySelector('.container');
 
 const drawBasicShapes = () => {
 
-  let transform = new TwoDots.Transform();
-  let layer = new TwoDots.CanvasLayer(600, 600, transform);
+  let transform = new ArfJS.Transform();
+  let layer = new ArfJS.CanvasLayer(600, 600, transform);
   layer.initLayer();
 
   container.appendChild(layer.canvas);
 
-  var rectangle = new TwoDots.Rectangle(new TwoDots.Point(300, 300), 80, 80);
-  var rectangleRenderer = new TwoDots.RectangleRenderer(layer.ctx, transform);
+  var rectangle = new ArfJS.Rectangle(new ArfJS.Point(300, 300), 80, 80);
+  var rectangleRenderer = new ArfJS.RectangleRenderer(layer.ctx, transform);
 
   rectangleRenderer.render(rectangle);
 
