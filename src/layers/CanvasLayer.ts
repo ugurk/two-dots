@@ -15,12 +15,12 @@ export class CanvasLayer {
         this.canvas.height = this.height;
     }
 
-    ctx(): CanvasRenderingContext2D {
+    get ctx(): CanvasRenderingContext2D {
         return this.canvas.getContext('2d')!;
     }
 
     refresh() {
-        let ctx = this.ctx();
+        let ctx = this.ctx;
         ctx.restore();
         this.clear();
         ctx.save();
@@ -39,7 +39,7 @@ export class CanvasLayer {
     }
 
     clear() {
-        let ctx = this.ctx();
+        let ctx = this.ctx;
         ctx.save();
         // use the identity matrix while clearing the canvas
         ctx.setTransform(1, 0, 0, 1, 0, 0);
@@ -50,7 +50,7 @@ export class CanvasLayer {
     clone(): CanvasLayer {
         const cloneLayer = new CanvasLayer(this.width, this.height, this.transform, this.opacity);
         cloneLayer.initLayer();
-        cloneLayer.ctx().drawImage(this.canvas, 0, 0);
+        cloneLayer.ctx.drawImage(this.canvas, 0, 0);
         return cloneLayer;
     }
 
@@ -60,7 +60,7 @@ export class CanvasLayer {
             return this.clone();
         }
 
-        let currentCtx = this.ctx();
+        let currentCtx = this.ctx;
         let points = polygon.points, i;
 
         var cropCanvas = document.createElement("canvas");
